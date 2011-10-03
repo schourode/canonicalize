@@ -20,7 +20,7 @@ namespace Canonicalize.Tests.Rules
         }
 
         [Test]
-        public void does_not_alter_url_without_www()
+        public void does_not_alter_url_with_www()
         {
             var inputUrl = new Uri("http://www.example.com");
             var uriBuilder = new UriBuilder(inputUrl);
