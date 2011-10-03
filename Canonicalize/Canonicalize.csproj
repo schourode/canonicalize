@@ -41,6 +41,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RedirectHandler.cs" />
     <Compile Include="Rules\LowercaseRule.cs" />
+    <Compile Include="Rules\NoWwwRule.cs" />
+    <Compile Include="Rules\WwwRule.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
