@@ -16,17 +16,17 @@ namespace Canonicalize
 
         public override RouteData GetRouteData(HttpContextBase httpContext)
         {
-            var requestedUrl = httpContext.Request.Url;
-            var canonicalUrl = requestedUrl;
+            var requestedUri = httpContext.Request.Url;
+            var uriBuilder = new UriBuilder(requestedUri);
 
             foreach (var rule in _rules)
             {
-                canonicalUrl = rule.Canonicalize(canonicalUrl);
+                rule.Apply(uriBuilder);
             }
 
-            if (!requestedUrl.Equals(canonicalUrl))
+            if (!requestedUri.Equals(uriBuilder.Uri))
             {
-                var handler = new RedirectHandler(canonicalUrl);
+                var handler = new RedirectHandler(uriBuilder.Uri);
                 return new RouteData(this, handler);
             }
 

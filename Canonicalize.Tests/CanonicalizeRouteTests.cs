@@ -23,13 +23,13 @@ namespace Canonicalize.Tests
         public void route_rules_are_invoked()
         {
             var filter = new Mock<IRule>();
-            var inputUrl = new Uri("http://example.com");
-            filter.Setup(x => x.Canonicalize(inputUrl)).Returns(inputUrl).Verifiable();
+            var inputUri = new UriBuilder("http://example.com");
+            filter.Setup(x => x.Apply(inputUri)).Verifiable();
 
             var route = new CanonicalizeRoute();
             route.Rules.Add(filter.Object);
 
-            var context = CreateFakeHttpContext(inputUrl);
+            var context = CreateFakeHttpContext(inputUri.Uri);
 
             route.GetRouteData(context);
 
@@ -40,13 +40,13 @@ namespace Canonicalize.Tests
         public void route_with_nonchanging_rule_not_routed()
         {
             var filter = new Mock<IRule>();
-            var inputUrl = new Uri("http://example.com");
-            filter.Setup(x => x.Canonicalize(inputUrl)).Returns(inputUrl);
+            var inputUri = new UriBuilder("http://example.com");
+            filter.Setup(x => x.Apply(inputUri));
 
             var route = new CanonicalizeRoute();
             route.Rules.Add(filter.Object);
 
-            var context = CreateFakeHttpContext(inputUrl);
+            var context = CreateFakeHttpContext(inputUri.Uri);
             
             var routeData = route.GetRouteData(context);
 
@@ -57,14 +57,13 @@ namespace Canonicalize.Tests
         public void route_with_changing_rule_routed()
         {
             var filter = new Mock<IRule>();
-            var inputUrl = new Uri("http://example.com");
-            var outputUrl = new Uri("http://example.net");
-            filter.Setup(x => x.Canonicalize(inputUrl)).Returns(outputUrl);
+            var inputUri = new UriBuilder("http://example.com");
+            filter.Setup(x => x.Apply(inputUri)).Callback<UriBuilder>(x => x.Scheme = "https");
 
             var route = new CanonicalizeRoute();
             route.Rules.Add(filter.Object);
 
-            var context = CreateFakeHttpContext(inputUrl);
+            var context = CreateFakeHttpContext(inputUri.Uri);
             var routeData = route.GetRouteData(context);
 
             Assert.NotNull(routeData);
