@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CanonicalizeRouteTests.cs" />
+    <Compile Include="Rules\LowercaseRuleTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
