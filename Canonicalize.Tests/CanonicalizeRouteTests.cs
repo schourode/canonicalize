@@ -8,7 +8,7 @@ namespace Canonicalize.Tests
     class CanonicalizeRouteTests
     {
         [Test]
-        public void route_without_filters_not_routed()
+        public void route_without_rules_not_routed()
         {
             var route = new CanonicalizeRoute();
             var inputUrl = new Uri("http://example.com");
@@ -20,14 +20,14 @@ namespace Canonicalize.Tests
         }
 
         [Test]
-        public void route_filters_are_invoked()
+        public void route_rules_are_invoked()
         {
-            var filter = new Mock<IUrlFilter>();
+            var filter = new Mock<IRule>();
             var inputUrl = new Uri("http://example.com");
             filter.Setup(x => x.Canonicalize(inputUrl)).Returns(inputUrl).Verifiable();
 
             var route = new CanonicalizeRoute();
-            route.Filters.Add(filter.Object);
+            route.Rules.Add(filter.Object);
 
             var context = CreateFakeHttpContext(inputUrl);
 
@@ -37,14 +37,14 @@ namespace Canonicalize.Tests
         }
 
         [Test]
-        public void route_with_nonchanging_filter_not_routed()
+        public void route_with_nonchanging_rule_not_routed()
         {
-            var filter = new Mock<IUrlFilter>();
+            var filter = new Mock<IRule>();
             var inputUrl = new Uri("http://example.com");
             filter.Setup(x => x.Canonicalize(inputUrl)).Returns(inputUrl);
 
             var route = new CanonicalizeRoute();
-            route.Filters.Add(filter.Object);
+            route.Rules.Add(filter.Object);
 
             var context = CreateFakeHttpContext(inputUrl);
             
@@ -54,15 +54,15 @@ namespace Canonicalize.Tests
         }
 
         [Test]
-        public void route_with_changing_filter_routed()
+        public void route_with_changing_rule_routed()
         {
-            var filter = new Mock<IUrlFilter>();
+            var filter = new Mock<IRule>();
             var inputUrl = new Uri("http://example.com");
             var outputUrl = new Uri("http://example.net");
             filter.Setup(x => x.Canonicalize(inputUrl)).Returns(outputUrl);
 
             var route = new CanonicalizeRoute();
-            route.Filters.Add(filter.Object);
+            route.Rules.Add(filter.Object);
 
             var context = CreateFakeHttpContext(inputUrl);
             var routeData = route.GetRouteData(context);

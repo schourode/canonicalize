@@ -2,7 +2,7 @@ using System;
 
 namespace Canonicalize
 {
-    public interface IUrlFilter
+    public interface IRule
     {
         Uri Canonicalize(Uri canonicalUrl);
     }

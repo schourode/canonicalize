@@ -37,7 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CanonicalizeRoute.cs" />
-    <Compile Include="IUrlFilter.cs" />
+    <Compile Include="IRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RedirectHandler.cs" />
   </ItemGroup>

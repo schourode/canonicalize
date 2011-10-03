@@ -7,11 +7,11 @@ namespace Canonicalize
 {
     public class CanonicalizeRoute : RouteBase
     {
-        private readonly IList<IUrlFilter> _filters = new List<IUrlFilter>();
+        private readonly IList<IRule> _rules = new List<IRule>();
 
-        public ICollection<IUrlFilter> Filters
+        public ICollection<IRule> Rules
         {
-            get { return _filters; }
+            get { return _rules; }
         }
 
         public override RouteData GetRouteData(HttpContextBase httpContext)
@@ -19,9 +19,9 @@ namespace Canonicalize
             var requestedUrl = httpContext.Request.Url;
             var canonicalUrl = requestedUrl;
 
-            foreach (var filter in _filters)
+            foreach (var rule in _rules)
             {
-                canonicalUrl = filter.Canonicalize(canonicalUrl);
+                canonicalUrl = rule.Canonicalize(canonicalUrl);
             }
 
             if (!requestedUrl.Equals(canonicalUrl))
