@@ -13,7 +13,7 @@ namespace Canonicalize.Rules
         /// <param name="uri">The URL to be canonicalized.</param>
         public void Apply(UriBuilder uri)
         {
-            if (!uri.Host.StartsWith("www."))
+            if (uri.Uri.HostNameType == UriHostNameType.Dns && !uri.Host.StartsWith("www.") && !uri.Host.Equals("localhost", StringComparison.InvariantCultureIgnoreCase))
             {
                 uri.Host = "www." + uri.Host;
             }
