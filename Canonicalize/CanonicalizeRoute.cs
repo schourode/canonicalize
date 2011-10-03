@@ -7,11 +7,21 @@ namespace Canonicalize
 {
     public class CanonicalizeRoute : RouteBase
     {
-        private readonly IList<IRule> _rules = new List<IRule>();
+        private readonly IList<IRule> _rules;
 
         public ICollection<IRule> Rules
         {
             get { return _rules; }
+        }
+
+        public CanonicalizeRoute()
+        {
+            _rules = new List<IRule>();
+        }
+
+        public CanonicalizeRoute(params IRule[] rules)
+        {
+            _rules = new List<IRule>(rules);
         }
 
         public override RouteData GetRouteData(HttpContextBase httpContext)
