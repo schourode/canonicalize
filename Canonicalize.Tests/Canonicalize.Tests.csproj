@@ -54,8 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CanonicalizeRouteTests.cs" />
+    <Compile Include="Rules\NoTrailingSlashRuleTests.cs" />
     <Compile Include="Rules\NoWwwRuleTests.cs" />
     <Compile Include="Rules\LowercaseRuleTests.cs" />
+    <Compile Include="Rules\TrailingSlashRuleTests.cs" />
     <Compile Include="Rules\WwwRuleTests.cs" />
   </ItemGroup>
   <ItemGroup>

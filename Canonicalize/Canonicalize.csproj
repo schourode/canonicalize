@@ -46,7 +46,9 @@
     <Compile Include="RouteCollectionExtensions.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Rules\TrailingSlashRule.cs" />
     <Compile Include="Rules\LowercaseRule.cs" />
+    <Compile Include="Rules\NoTrailingSlashRule.cs" />
     <Compile Include="Rules\NoWwwRule.cs" />
     <Compile Include="Rules\WwwRule.cs">
       <SubType>Code</SubType>

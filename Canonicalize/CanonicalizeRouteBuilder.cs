@@ -17,9 +17,21 @@ namespace Canonicalize
             return this;
         }
 
+        public CanonicalizeRouteBuilder NoTrailingSlash()
+        {
+            _route.Rules.Add(new NoTrailingSlashRule());
+            return this;
+        }
+
         public CanonicalizeRouteBuilder NoWww()
         {
             _route.Rules.Add(new NoWwwRule());
+            return this;
+        }
+
+        public CanonicalizeRouteBuilder TrailingSlash()
+        {
+            _route.Rules.Add(new TrailingSlashRule());
             return this;
         }
 
