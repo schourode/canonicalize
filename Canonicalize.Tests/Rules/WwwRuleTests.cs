@@ -6,29 +6,16 @@ namespace Canonicalize.Tests.Rules
 {
     public class WwwRuleTests
     {
-        [Test]
-        public void adds_www_when_not_present()
+        [TestCase("http://example.com", "http://www.example.com", TestName = "Adds www when not present")]
+        [TestCase("http://www.example.com", "http://www.example.com", TestName = "Does not add duplicate www")]
+        public void AssertUrlChange(string originalUrl, string expectedCanonicalUrl)
         {
-            var inputUrl = new Uri("http://example.com");
-            var expectedUrl = new Uri("http://www.example.com");
-            var uriBuilder = new UriBuilder(inputUrl);
+            var uriBuilder = new UriBuilder(originalUrl);
 
             IRule rule = new WwwRule();
             rule.Apply(uriBuilder);
 
-            Assert.That(uriBuilder.Uri, Is.EqualTo(expectedUrl));
-        }
-
-        [Test]
-        public void does_not_alter_url_with_www()
-        {
-            var inputUrl = new Uri("http://www.example.com");
-            var uriBuilder = new UriBuilder(inputUrl);
-
-            IRule rule = new WwwRule();
-            rule.Apply(uriBuilder);
-
-            Assert.That(uriBuilder.Uri, Is.EqualTo(inputUrl));
+            Assert.That(uriBuilder.Uri, Is.EqualTo(new Uri(expectedCanonicalUrl)));
         }
     }
 }

@@ -6,29 +6,16 @@ namespace Canonicalize.Tests.Rules
 {
     public class NoTrailingSlashRuleTests
     {
-        [Test]
-        public void removes_slash_when_present()
+        [TestCase("http://example.com/foobar/", "http://example.com/foobar", TestName = "Removes slash when present")]
+        [TestCase("http://example.com/foobar", "http://example.com/foobar", TestName = "Leaves URL without slash untouched")]
+        public void AssertUrlChange(string originalUrl, string expectedCanonicalUrl)
         {
-            var inputUrl = new Uri("http://example.com/foobar/");
-            var expectedUrl = new Uri("http://example.com/foobar");
-            var uriBuilder = new UriBuilder(inputUrl);
+            var uriBuilder = new UriBuilder(originalUrl);
 
             IRule rule = new NoTrailingSlashRule();
             rule.Apply(uriBuilder);
 
-            Assert.That(uriBuilder.Uri, Is.EqualTo(expectedUrl));
-        }
-
-        [Test]
-        public void does_not_alter_url_without_slash()
-        {
-            var inputUrl = new Uri("http://www.example.com/foobar");
-            var uriBuilder = new UriBuilder(inputUrl);
-
-            IRule rule = new NoTrailingSlashRule();
-            rule.Apply(uriBuilder);
-
-            Assert.That(uriBuilder.Uri, Is.EqualTo(inputUrl));
+            Assert.That(uriBuilder.Uri, Is.EqualTo(new Uri(expectedCanonicalUrl)));
         }
     }
 }
