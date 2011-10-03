@@ -30,5 +30,17 @@ namespace Canonicalize.Tests.Rules
 
             Assert.That(uriBuilder.Uri, Is.EqualTo(inputUrl));
         }
+
+        [Test]
+        public void does_not_alter_url_with_period()
+        {
+            var inputUrl = new Uri("http://www.example.com/foobar.png");
+            var uriBuilder = new UriBuilder(inputUrl);
+
+            IRule rule = new TrailingSlashRule();
+            rule.Apply(uriBuilder);
+
+            Assert.That(uriBuilder.Uri, Is.EqualTo(inputUrl));
+        }
     }
 }
