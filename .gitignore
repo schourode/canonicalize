@@ -46,4 +46,5 @@ _ReSharper*/
 ~$*
 
 #NuGet
-packages/
+[Pp]ackages/
+*.nupkg
