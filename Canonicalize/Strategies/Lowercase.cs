@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace Canonicalize.Rules
+namespace Canonicalize.Strategies
 {
     /// <summary>
-    /// URL canonicalization rule enforcing that all characters in the path are lower case.
+    /// URL canonicalization strategy enforcing that all characters in the path are lower case.
     /// </summary>
-    public class LowercaseRule : IRule
+    public class Lowercase : IUrlStrategy
     {
         /// <summary>
         /// Converts any upper case characters in the path segment of the URL to their lower case equivalent.

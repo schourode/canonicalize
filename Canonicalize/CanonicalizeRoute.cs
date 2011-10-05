@@ -6,50 +6,50 @@ using System.Web.Routing;
 namespace Canonicalize
 {
     /// <summary>
-    /// Checks incoming requests against a collection of rules and redirects to a canonical URL if applicable.
+    /// Applies a number of canonicalization strategies to the requested URL and redirects if applicable.
     /// </summary>
     public class CanonicalizeRoute : RouteBase
     {
-        private readonly IList<IRule> _rules;
+        private readonly IList<IUrlStrategy> _strategies;
 
         /// <summary>
-        /// Initializes a <see cref="CanonicalizeRoute"/> with an empty rule collection.
+        /// Initializes a <see cref="CanonicalizeRoute"/> with an empty strategy collection.
         /// </summary>
         public CanonicalizeRoute()
         {
-            _rules = new List<IRule>();
+            _strategies = new List<IUrlStrategy>();
         }
 
         /// <summary>
-        /// Initializes a <see cref="CanonicalizeRoute"/> with a specified set of rules.
+        /// Initializes a <see cref="CanonicalizeRoute"/> with a specified set of strategies.
         /// </summary>
-        /// <param name="rules">Rules to be initially added to the <see cref="Rules"/> collection.</param>
-        public CanonicalizeRoute(params IRule[] rules)
+        /// <param name="strategies">Strategies to be initially added to the <see cref="Strategies"/> collection.</param>
+        public CanonicalizeRoute(params IUrlStrategy[] strategies)
         {
-            _rules = new List<IRule>(rules);
+            _strategies = new List<IUrlStrategy>(strategies);
         }
 
         /// <summary>
-        /// Gets the collection of rules to apply to incoming URLs.
+        /// Gets the collection of strategies to apply to incoming URLs.
         /// </summary>
-        public ICollection<IRule> Rules
+        public ICollection<IUrlStrategy> Strategies
         {
-            get { return _rules; }
+            get { return _strategies; }
         }
 
         /// <summary>
-        /// Applies each <see cref="Rules"/> in turn. Only if the result differs from the originally requested URL a redirect is returned.
+        /// Applies each <see cref="Strategies"/> in turn. Only if the result differs from the originally requested URL a redirect is returned.
         /// </summary>
         /// <param name="httpContext">An object that encapsulates information about the HTTP request.</param>
-        /// <returns>Route data with a <see cref="RedirectHandler"/> if any rules were triggered, otherwise null.</returns>
+        /// <returns>Route data with a <see cref="RedirectHandler"/> if any strategies were triggered, otherwise null.</returns>
         public override RouteData GetRouteData(HttpContextBase httpContext)
         {
             var requestedUri = httpContext.Request.Url;
             var uriBuilder = new UriBuilder(requestedUri);
 
-            foreach (var rule in _rules)
+            foreach (var strategy in _strategies)
             {
-                rule.Apply(uriBuilder);
+                strategy.Apply(uriBuilder);
             }
 
             if (!requestedUri.Equals(uriBuilder.Uri))

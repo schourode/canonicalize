@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace Canonicalize.Rules
+namespace Canonicalize.Strategies
 {
     /// <summary>
-    /// URL canonicalization rule ensuring a slash as the last character of the path for non-file URLs.
+    /// URL canonicalization strategy ensuring a slash as the last character of the path for non-file URLs.
     /// </summary>
-    public class TrailingSlashRule : IRule
+    public class TrailingSlash : IUrlStrategy
     {
         /// <summary>
         /// Adds a forward slash (/) to the end of the part segment of the URL, if not already present.

@@ -54,11 +54,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CanonicalizeRouteTests.cs" />
-    <Compile Include="Rules\NoTrailingSlashRuleTests.cs" />
-    <Compile Include="Rules\NoWwwRuleTests.cs" />
-    <Compile Include="Rules\LowercaseRuleTests.cs" />
-    <Compile Include="Rules\TrailingSlashRuleTests.cs" />
-    <Compile Include="Rules\WwwRuleTests.cs" />
+    <Compile Include="Strategies\NoTrailingSlashTests.cs" />
+    <Compile Include="Strategies\NoWwwTests.cs" />
+    <Compile Include="Strategies\LowercaseTests.cs" />
+    <Compile Include="Strategies\TrailingSlashTests.cs" />
+    <Compile Include="Strategies\WwwTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

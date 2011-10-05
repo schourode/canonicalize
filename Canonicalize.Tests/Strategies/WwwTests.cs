@@ -1,10 +1,10 @@
 ﻿using System;
-using Canonicalize.Rules;
+using Canonicalize.Strategies;
 using NUnit.Framework;
 
-namespace Canonicalize.Tests.Rules
+namespace Canonicalize.Tests.Strategies
 {
-    public class WwwRuleTests
+    public class WwwTests
     {
         [TestCase("http://example.com", "http://www.example.com", TestName = "Adds www when not present")]
         [TestCase("http://www.example.com", "http://www.example.com", TestName = "Does not add duplicate www")]
@@ -14,8 +14,8 @@ namespace Canonicalize.Tests.Rules
         {
             var uriBuilder = new UriBuilder(originalUrl);
 
-            IRule rule = new WwwRule();
-            rule.Apply(uriBuilder);
+            IUrlStrategy strategy = new Www();
+            strategy.Apply(uriBuilder);
 
             Assert.That(uriBuilder.Uri, Is.EqualTo(new Uri(expectedCanonicalUrl)));
         }

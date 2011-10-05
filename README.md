@@ -1,6 +1,6 @@
 # URL canonicalization with ASP.NET (MVC) routing
 
-The default URL routing setup in an ASP.NET application (MVC or web forms), using the `System.Web.Routing` framework, is very forgiving. For instance, it does not care about upper vs lower case, about trailing slashes or host names. This can be a problem if you care about search engine optimization (SEO), as the relaxed URL rules yields duplicate content.
+The default URL routing setup in an ASP.NET application (MVC or web forms), using the `System.Web.Routing` framework, is very forgiving. For instance, it does not care about upper vs lower case, about trailing slashes or host names. This can be a problem if you care about search engine optimization (SEO), as the relaxed URL handling yields duplicate content.
 
 *Canonicalize* complements the ASP.NET routing engine with a configurable `CanonicalizeRoute`, which will handle requests to non-canonical URLs by permanently redirecting (HTTP 301) to the canonical URL.
 
@@ -14,21 +14,21 @@ In your route registration (typically in `Global.asax.cs`) add the following, *b
 
     routes.Canonicalize().Www().Lowercase().NoTrailingSlash();
 
-The line above adds a `CanonicalizeRoute` to your routing table and adds three rules to its configuration. Remove any rule you do not require, and use IntelliSense to explore what other rules are available or consult the list below.
+The line above adds a `CanonicalizeRoute` to your routing table and adds three canonicalization strategies to its configuration. Remove any strategy you do not require, and use IntelliSense to explore what other strategies are available or consult the list below.
 
-## Built-in rules
+## Built-in strategies
 
 * `Lowercase` will ensure that all characters in the path are lowercase.
 * `Www / NoWww` will redirect from example.com to www.example.com or vice versa.
 * `TrailingSlash / NoTrailingSlash` will add or remove a trailing slash from the path.
 
-## Custom rules
+## Custom strategies
 
-Defining your own URL canonicalization rules requires you to implement the one-method `IRule` interface. Then use the more verbose route setup syntax:
+Defining your own URL canonicalization strategies requires you to implement the one-method `IUrlStrategy` interface. Then use the more verbose route setup syntax:
 
-    routes.Add(new CanonicalizeRoute(new WwwRule(), new CustomRule()));
+    routes.Add(new CanonicalizeRoute(new Lowercase(), new CustomStrategy()));
 
-In order to enable fluent configuration with your new rule, you must also add an extension method to `CanonicalizeRouteBuilder`. If you find that your rule might be useful for others, consider sending in a patch.
+In order to enable fluent configuration with your new strategy, you must also add an extension method to `CanonicalizeRouteBuilder`. If you find that your strategy might be useful for others, consider sending in a patch.
 
 ## License
 

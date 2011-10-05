@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace Canonicalize.Rules
+namespace Canonicalize.Strategies
 {
     /// <summary>
-    /// URL canonicalization rule removing trailing slash characters from the end of the path.
+    /// URL canonicalization strategy removing trailing slash characters from the end of the path.
     /// </summary>
-    public class NoTrailingSlashRule : IRule
+    public class NoTrailingSlash : IUrlStrategy
     {
         /// <summary>
         /// Removes any forward slashes (/) from the end of the part segment of the URL.

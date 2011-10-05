@@ -41,17 +41,17 @@
     <Compile Include="CanonicalizeRouteBuilder.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="IRule.cs" />
+    <Compile Include="IUrlStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RedirectHandler.cs" />
     <Compile Include="RouteCollectionExtensions.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Rules\TrailingSlashRule.cs" />
-    <Compile Include="Rules\LowercaseRule.cs" />
-    <Compile Include="Rules\NoTrailingSlashRule.cs" />
-    <Compile Include="Rules\NoWwwRule.cs" />
-    <Compile Include="Rules\WwwRule.cs">
+    <Compile Include="Strategies\TrailingSlash.cs" />
+    <Compile Include="Strategies\Lowercase.cs" />
+    <Compile Include="Strategies\NoTrailingSlash.cs" />
+    <Compile Include="Strategies\NoWww.cs" />
+    <Compile Include="Strategies\Www.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

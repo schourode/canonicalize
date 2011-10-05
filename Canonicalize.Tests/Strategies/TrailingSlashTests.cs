@@ -1,10 +1,10 @@
 ﻿using System;
-using Canonicalize.Rules;
+using Canonicalize.Strategies;
 using NUnit.Framework;
 
-namespace Canonicalize.Tests.Rules
+namespace Canonicalize.Tests.Strategies
 {
-    public class TrailingSlashRuleTests
+    public class TrailingSlashTests
     {
         [TestCase("http://example.com/foobar", "http://example.com/foobar/", TestName = "Appends slash when not present")]
         [TestCase("http://example.com/foobar/", "http://example.com/foobar/", TestName = "Does not append duplicate slash")]
@@ -13,8 +13,8 @@ namespace Canonicalize.Tests.Rules
         {
             var uriBuilder = new UriBuilder(originalUrl);
 
-            IRule rule = new TrailingSlashRule();
-            rule.Apply(uriBuilder);
+            IUrlStrategy strategy = new TrailingSlash();
+            strategy.Apply(uriBuilder);
 
             Assert.That(uriBuilder.Uri, Is.EqualTo(new Uri(expectedCanonicalUrl)));
         }

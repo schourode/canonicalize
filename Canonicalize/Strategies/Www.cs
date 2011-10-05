@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace Canonicalize.Rules
+namespace Canonicalize.Strategies
 {
     /// <summary>
-    /// URL canonicalization rule ensuring a host name including the www domain prefix.
+    /// URL canonicalization strategy ensuring a host name including the www domain prefix.
     /// </summary>
-    public class WwwRule : IRule
+    public class Www : IUrlStrategy
     {
         /// <summary>
         /// Adds "www." to the beginning of the host name, if not present.

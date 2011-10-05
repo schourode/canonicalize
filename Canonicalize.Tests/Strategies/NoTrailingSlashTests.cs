@@ -1,10 +1,10 @@
 ﻿using System;
-using Canonicalize.Rules;
+using Canonicalize.Strategies;
 using NUnit.Framework;
 
-namespace Canonicalize.Tests.Rules
+namespace Canonicalize.Tests.Strategies
 {
-    public class NoTrailingSlashRuleTests
+    public class NoTrailingSlashTests
     {
         [TestCase("http://example.com/foobar/", "http://example.com/foobar", TestName = "Removes slash when present")]
         [TestCase("http://example.com/foobar", "http://example.com/foobar", TestName = "Leaves URL without slash untouched")]
@@ -12,8 +12,8 @@ namespace Canonicalize.Tests.Rules
         {
             var uriBuilder = new UriBuilder(originalUrl);
 
-            IRule rule = new NoTrailingSlashRule();
-            rule.Apply(uriBuilder);
+            IUrlStrategy strategy = new NoTrailingSlash();
+            strategy.Apply(uriBuilder);
 
             Assert.That(uriBuilder.Uri, Is.EqualTo(new Uri(expectedCanonicalUrl)));
         }

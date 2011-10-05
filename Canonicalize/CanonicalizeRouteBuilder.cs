@@ -1,4 +1,4 @@
-﻿using Canonicalize.Rules;
+﻿using Canonicalize.Strategies;
 
 namespace Canonicalize
 {
@@ -19,52 +19,52 @@ namespace Canonicalize
         }
 
         /// <summary>
-        /// Adds <see cref="LowercaseRule"/> to the rule collection.
+        /// Adds <see cref="Strategies.Lowercase"/> to the strategy collection.
         /// </summary>
         /// <returns>itself, allowing additional method calls to be chained.</returns>
         public CanonicalizeRouteBuilder Lowercase()
         {
-            _route.Rules.Add(new LowercaseRule());
+            _route.Strategies.Add(new Lowercase());
             return this;
         }
 
         /// <summary>
-        /// Adds <see cref="NoTrailingSlashRule"/> to the rule collection.
+        /// Adds <see cref="Strategies.NoTrailingSlash"/> to the strategy collection.
         /// </summary>
         /// <returns>itself, allowing additional method calls to be chained.</returns>
         public CanonicalizeRouteBuilder NoTrailingSlash()
         {
-            _route.Rules.Add(new NoTrailingSlashRule());
+            _route.Strategies.Add(new NoTrailingSlash());
             return this;
         }
 
         /// <summary>
-        /// Adds <see cref="NoWwwRule"/> to the rule collection.
+        /// Adds <see cref="Strategies.NoWww"/> to the strategy collection.
         /// </summary>
         /// <returns>itself, allowing additional method calls to be chained.</returns>
         public CanonicalizeRouteBuilder NoWww()
         {
-            _route.Rules.Add(new NoWwwRule());
+            _route.Strategies.Add(new NoWww());
             return this;
         }
 
         /// <summary>
-        /// Adds <see cref="TrailingSlashRule"/> to the rule collection.
+        /// Adds <see cref="Strategies.TrailingSlash"/> to the strategy collection.
         /// </summary>
         /// <returns>itself, allowing additional method calls to be chained.</returns>
         public CanonicalizeRouteBuilder TrailingSlash()
         {
-            _route.Rules.Add(new TrailingSlashRule());
+            _route.Strategies.Add(new TrailingSlash());
             return this;
         }
 
         /// <summary>
-        /// Adds <see cref="NoWwwRule"/> to the rule collection.
+        /// Adds <see cref="Strategies.NoWww"/> to the strategy collection.
         /// </summary>
         /// <returns>itself, allowing additional method calls to be chained.</returns>
         public CanonicalizeRouteBuilder Www()
         {
-            _route.Rules.Add(new WwwRule());
+            _route.Strategies.Add(new Www());
             return this;
         }
     }

@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace Canonicalize.Rules
+namespace Canonicalize.Strategies
 {
     /// <summary>
-    /// URL canonicalization rule removing the www domain prefix if present.
+    /// URL canonicalization strategy removing the www domain prefix if present.
     /// </summary>
-    public class NoWwwRule : IRule
+    public class NoWww : IUrlStrategy
     {
         /// <summary>
         /// Removes a prefix of "www." from the host name if present.
