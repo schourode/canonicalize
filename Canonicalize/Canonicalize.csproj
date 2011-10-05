@@ -48,7 +48,9 @@
     <Compile Include="RouteCollectionExtensions.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Strategies\Map.cs" />
     <Compile Include="Strategies\Host.cs" />
+    <Compile Include="Strategies\Pattern.cs" />
     <Compile Include="Strategies\TrailingSlash.cs" />
     <Compile Include="Strategies\Lowercase.cs" />
     <Compile Include="Strategies\NoTrailingSlash.cs" />

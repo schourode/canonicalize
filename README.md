@@ -21,6 +21,9 @@ The line above adds a `CanonicalizeRoute` to your routing table and adds three c
 * `Lowercase` will ensure that all characters in the path are lowercase.
 * `Www / NoWww` will redirect from example.com to www.example.com or vice versa.
 * `TrailingSlash / NoTrailingSlash` will add or remove a trailing slash from the path.
+* `Host` will redirect all requests to a specific DNS host name or IP address.
+* `Map` will lookup the path in a dictionary to find a new path.
+* `Pattern` performs a search/replace on the path against a regular expression.
 
 ## Custom strategies
 
