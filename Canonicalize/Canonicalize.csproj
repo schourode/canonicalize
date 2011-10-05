@@ -41,6 +41,7 @@
     <Compile Include="CanonicalizeRouteBuilder.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CanonicalizeRouteBuilderExtensions.cs" />
     <Compile Include="IUrlStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RedirectHandler.cs" />

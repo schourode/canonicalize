@@ -1,6 +1,4 @@
-﻿using Canonicalize.Strategies;
-
-namespace Canonicalize
+﻿namespace Canonicalize
 {
     /// <summary>
     /// Exposes a fluent API with chainable methods for configuring a <see cref="CanonicalizeRoute"/>.
@@ -19,52 +17,13 @@ namespace Canonicalize
         }
 
         /// <summary>
-        /// Adds <see cref="Strategies.Lowercase"/> to the strategy collection.
+        /// Adds a new canonicalization strategy to the <see cref="CanonicalizeRoute"/>.
         /// </summary>
+        /// <param name="strategy">The canonicalization strategy to be added.</param>
         /// <returns>itself, allowing additional method calls to be chained.</returns>
-        public CanonicalizeRouteBuilder Lowercase()
+        public CanonicalizeRouteBuilder Strategy(IUrlStrategy strategy)
         {
-            _route.Strategies.Add(new Lowercase());
-            return this;
-        }
-
-        /// <summary>
-        /// Adds <see cref="Strategies.NoTrailingSlash"/> to the strategy collection.
-        /// </summary>
-        /// <returns>itself, allowing additional method calls to be chained.</returns>
-        public CanonicalizeRouteBuilder NoTrailingSlash()
-        {
-            _route.Strategies.Add(new NoTrailingSlash());
-            return this;
-        }
-
-        /// <summary>
-        /// Adds <see cref="Strategies.NoWww"/> to the strategy collection.
-        /// </summary>
-        /// <returns>itself, allowing additional method calls to be chained.</returns>
-        public CanonicalizeRouteBuilder NoWww()
-        {
-            _route.Strategies.Add(new NoWww());
-            return this;
-        }
-
-        /// <summary>
-        /// Adds <see cref="Strategies.TrailingSlash"/> to the strategy collection.
-        /// </summary>
-        /// <returns>itself, allowing additional method calls to be chained.</returns>
-        public CanonicalizeRouteBuilder TrailingSlash()
-        {
-            _route.Strategies.Add(new TrailingSlash());
-            return this;
-        }
-
-        /// <summary>
-        /// Adds <see cref="Strategies.NoWww"/> to the strategy collection.
-        /// </summary>
-        /// <returns>itself, allowing additional method calls to be chained.</returns>
-        public CanonicalizeRouteBuilder Www()
-        {
-            _route.Strategies.Add(new Www());
+            _route.Strategies.Add(strategy);
             return this;
         }
     }
