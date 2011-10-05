@@ -5,6 +5,17 @@ namespace Canonicalize
     public static class CanonicalizeRouteBuilderExtensions
     {
         /// <summary>
+        /// Adds <see cref="Strategies.Host"/> to the strategy collection.
+        /// </summary>
+        /// <param name="builder">Reponsible for building the <see cref="CanonicalizeRoute"/>.</param>
+        /// <param name="host">Canonical DNS host name or IP address.</param>
+        /// <returns>itself, allowing additional method calls to be chained.</returns>
+        public static CanonicalizeRouteBuilder Host(this CanonicalizeRouteBuilder builder, string host)
+        {
+            return builder.Strategy(new Host(host));
+        }
+
+        /// <summary>
         /// Adds <see cref="Strategies.Lowercase"/> to the strategy collection.
         /// </summary>
         /// <param name="builder">Reponsible for building the <see cref="CanonicalizeRoute"/>.</param>

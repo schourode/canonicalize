@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CanonicalizeRouteTests.cs" />
+    <Compile Include="Strategies\HostTests.cs" />
     <Compile Include="Strategies\NoTrailingSlashTests.cs" />
     <Compile Include="Strategies\NoWwwTests.cs" />
     <Compile Include="Strategies\LowercaseTests.cs" />
