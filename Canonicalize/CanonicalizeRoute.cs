@@ -44,7 +44,7 @@ namespace Canonicalize
         /// <returns>Route data with a <see cref="RedirectHandler"/> if any strategies were triggered, otherwise null.</returns>
         public override RouteData GetRouteData(HttpContextBase httpContext)
         {
-            var requestedUri = httpContext.Request.Url;
+            var requestedUri = httpContext.Request.GetOriginalUrl();
             var uriBuilder = new UriBuilder(requestedUri);
 
             foreach (var strategy in _strategies)
