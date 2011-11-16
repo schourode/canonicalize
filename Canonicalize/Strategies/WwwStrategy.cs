@@ -5,7 +5,7 @@ namespace Canonicalize.Strategies
     /// <summary>
     /// URL canonicalization strategy ensuring a host name including the www domain prefix.
     /// </summary>
-    public class Www : IUrlStrategy
+    public class WwwStrategy : IUrlStrategy
     {
         /// <summary>
         /// Adds "www." to the beginning of the host name, if not present.

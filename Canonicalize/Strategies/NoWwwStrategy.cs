@@ -5,7 +5,7 @@ namespace Canonicalize.Strategies
     /// <summary>
     /// URL canonicalization strategy removing the www domain prefix if present.
     /// </summary>
-    public class NoWww : IUrlStrategy
+    public class NoWwwStrategy : IUrlStrategy
     {
         /// <summary>
         /// Removes a prefix of "www." from the host name if present.

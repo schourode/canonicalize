@@ -5,7 +5,7 @@ namespace Canonicalize.Strategies
     /// <summary>
     /// URL canonicalization strategy ensuring a slash as the last character of the path for non-file URLs.
     /// </summary>
-    public class TrailingSlash : IUrlStrategy
+    public class TrailingSlashStrategy : IUrlStrategy
     {
         /// <summary>
         /// Adds a forward slash (/) to the end of the part segment of the URL, if not already present.

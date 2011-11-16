@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace Canonicalize.Tests.Strategies
 {
-    public class WwwTests
+    public class WwwStrategyTests
     {
         [TestCase("http://example.com", "http://www.example.com", TestName = "Adds www when not present")]
         [TestCase("http://www.example.com", "http://www.example.com", TestName = "Does not add duplicate www")]
@@ -14,7 +14,7 @@ namespace Canonicalize.Tests.Strategies
         {
             var uriBuilder = new UriBuilder(originalUrl);
 
-            IUrlStrategy strategy = new Www();
+            IUrlStrategy strategy = new WwwStrategy();
             strategy.Apply(uriBuilder);
 
             Assert.That(uriBuilder.Uri, Is.EqualTo(new Uri(expectedCanonicalUrl)));

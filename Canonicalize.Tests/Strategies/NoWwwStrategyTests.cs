@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace Canonicalize.Tests.Strategies
 {
-    public class NoWwwTests
+    public class NoWwwStrategyTests
     {
         [TestCase("http://www.example.com", "http://example.com", TestName = "Removes www when present")]
         [TestCase("http://example.com", "http://example.com", TestName = "Leaves URL without www untouched")]
@@ -12,7 +12,7 @@ namespace Canonicalize.Tests.Strategies
         {
             var uriBuilder = new UriBuilder(originalUrl);
 
-            IUrlStrategy strategy = new NoWww();
+            IUrlStrategy strategy = new NoWwwStrategy();
             strategy.Apply(uriBuilder);
 
             Assert.That(uriBuilder.Uri, Is.EqualTo(new Uri(expectedCanonicalUrl)));

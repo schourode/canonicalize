@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace Canonicalize.Tests.Strategies
 {
-    public class TrailingSlashTests
+    public class TrailingSlashStrategyTests
     {
         [TestCase("http://example.com/foobar", "http://example.com/foobar/", TestName = "Appends slash when not present")]
         [TestCase("http://example.com/foobar/", "http://example.com/foobar/", TestName = "Does not append duplicate slash")]
@@ -13,7 +13,7 @@ namespace Canonicalize.Tests.Strategies
         {
             var uriBuilder = new UriBuilder(originalUrl);
 
-            IUrlStrategy strategy = new TrailingSlash();
+            IUrlStrategy strategy = new TrailingSlashStrategy();
             strategy.Apply(uriBuilder);
 
             Assert.That(uriBuilder.Uri, Is.EqualTo(new Uri(expectedCanonicalUrl)));

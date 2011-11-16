@@ -54,14 +54,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CanonicalizeRouteTests.cs" />
-    <Compile Include="Strategies\MapTests.cs" />
-    <Compile Include="Strategies\HostTests.cs" />
-    <Compile Include="Strategies\NoTrailingSlashTests.cs" />
-    <Compile Include="Strategies\NoWwwTests.cs" />
-    <Compile Include="Strategies\LowercaseTests.cs" />
-    <Compile Include="Strategies\PatternTests.cs" />
-    <Compile Include="Strategies\TrailingSlashTests.cs" />
-    <Compile Include="Strategies\WwwTests.cs" />
+    <Compile Include="Strategies\MapStrategyTests.cs" />
+    <Compile Include="Strategies\HostStrategyTests.cs" />
+    <Compile Include="Strategies\NoTrailingSlashStrategyTests.cs" />
+    <Compile Include="Strategies\NoWwwStrategyTests.cs" />
+    <Compile Include="Strategies\LowercaseStrategyTests.cs" />
+    <Compile Include="Strategies\PatternStrategyTests.cs" />
+    <Compile Include="Strategies\TrailingSlashStrategyTests.cs" />
+    <Compile Include="Strategies\WwwStrategyTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

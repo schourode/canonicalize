@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace Canonicalize.Tests.Strategies
 {
-    class LowercaseTests
+    class LowercaseStrategyTests
     {
         [TestCase("http://example.com/FOObar", "http://example.com/foobar", TestName = "Converts path to lower case")]
         [TestCase("http://example.com/foobar", "http://example.com/foobar", TestName = "Leaves already lower caed path untouched")]
@@ -13,7 +13,7 @@ namespace Canonicalize.Tests.Strategies
         {
             var uriBuilder = new UriBuilder(originalUrl);
 
-            IUrlStrategy strategy = new Lowercase();
+            IUrlStrategy strategy = new LowercaseStrategy();
             strategy.Apply(uriBuilder);
 
             Assert.That(uriBuilder.Uri, Is.EqualTo(new Uri(expectedCanonicalUrl)));
