@@ -6,7 +6,7 @@ namespace Canonicalize.Strategies
     /// <summary>
     /// URL canonicalization strategy using a pattern described as a regular expression to modify the path.
     /// </summary>
-    public class PatternStrategy : IUrlStrategy
+    public sealed class PatternStrategy : IUrlStrategy
     {
         private readonly Regex _regex;
         private readonly string _replacement;

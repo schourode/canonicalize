@@ -5,7 +5,7 @@ namespace Canonicalize.Strategies
     /// <summary>
     /// URL canonicalization strategy enforcing use of a specific DNS host name or IP address.
     /// </summary>
-    public class HostStrategy : IUrlStrategy
+    public sealed class HostStrategy : IUrlStrategy
     {
         private readonly string _host;
 

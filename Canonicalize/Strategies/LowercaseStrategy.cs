@@ -5,7 +5,7 @@ namespace Canonicalize.Strategies
     /// <summary>
     /// URL canonicalization strategy enforcing that all characters in the path are lower case.
     /// </summary>
-    public class LowercaseStrategy : IUrlStrategy
+    public sealed class LowercaseStrategy : IUrlStrategy
     {
         /// <summary>
         /// Converts any upper case characters in the path segment of the URL to their lower case equivalent.

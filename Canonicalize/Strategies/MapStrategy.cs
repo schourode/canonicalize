@@ -6,7 +6,7 @@ namespace Canonicalize.Strategies
     /// <summary>
     /// URL canonicalization strategy using a map/dictionary data structure to map old paths to new ones.
     /// </summary>
-    public class MapStrategy : IUrlStrategy
+    public sealed class MapStrategy : IUrlStrategy
     {
         private readonly IDictionary<string, string> _dictionary;
 
