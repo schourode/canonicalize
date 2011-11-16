@@ -29,7 +29,7 @@ The line above adds a `CanonicalizeRoute` to your routing table and adds three c
 
 Defining your own URL canonicalization strategies requires you to implement the one-method `IUrlStrategy` interface. Then use the more verbose route setup syntax:
 
-    routes.Add(new CanonicalizeRoute(new Lowercase(), new CustomStrategy()));
+    routes.Add(new CanonicalizeRoute(new LowercaseStrategy(), new CustomStrategy()));
 
 In order to enable fluent configuration with your new strategy, you must also add an extension method to `CanonicalizeRouteBuilder`. If you find that your strategy might be useful for others, consider sending in a patch.
 
