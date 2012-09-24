@@ -2,9 +2,7 @@
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Canonicalize")]
-[assembly: AssemblyProduct("Canonicalize")]
 [assembly: AssemblyDescription("URL canonicalization with ASP.NET (MVC) routing")]
-[assembly: AssemblyCopyright("Copyright 2011 Joern Schou-Rode")]
 
 #if DEBUG
 [assembly: AssemblyConfiguration("Debug")]
@@ -12,6 +10,6 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("Release")]
 #endif
 
-[assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("1.2.*")]
 
 [assembly: ComVisible(false)]

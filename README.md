@@ -33,6 +33,13 @@ Defining your own URL canonicalization strategies requires you to implement the 
 
 In order to enable fluent configuration with your new strategy, you must also add an extension method to `CanonicalizeRouteBuilder`. If you find that your strategy might be useful for others, consider sending in a patch.
 
+## Outbound routing
+
+While *Canonicalize* ensures that all incoming requests matches your applications URL scheme, the responsibility to output internal links in their canonical form is left with you. The [`AppendTrailingSlash`][msdn1] and [`LowercaseUrls`][msdn2] options – introduced in .NET 4.5 – can be useful in this regard.
+
+[msdn1]: http://msdn.microsoft.com/en-us/library/system.web.routing.routecollection.appendtrailingslash.aspx
+[msdn2]: http://msdn.microsoft.com/en-us/library/system.web.routing.routecollection.lowercaseurls.aspx
+
 ## License
 
 *Canonicalize* is released under the MIT license.
