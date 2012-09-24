@@ -71,11 +71,27 @@ namespace Canonicalize.Tests
             Assert.IsInstanceOf<RedirectHandler>(routeData.RouteHandler);
         }
 
-        private static HttpContextBase CreateFakeHttpContext(Uri url)
+        [Test]
+        public void post_request_not_routed()
+        {
+            var filter = new Mock<IUrlStrategy>();
+            var inputUri = new UriBuilder("http://example.com");
+            filter.Setup(x => x.Apply(inputUri)).Callback<UriBuilder>(x => x.Scheme = "https");
+
+            var route = new CanonicalizeRoute();
+            route.Strategies.Add(filter.Object);
+
+            var context = CreateFakeHttpContext(inputUri.Uri, "POST");
+            var routeData = route.GetRouteData(context);
+
+            Assert.Null(routeData);
+        }
+
+        private static HttpContextBase CreateFakeHttpContext(Uri url, string method = "GET")
         {
             return Mock.Of<HttpContextBase>(x =>
                 x.Request == Mock.Of<HttpRequestBase>(y =>
-                    y.Url == url
+                    y.Url == url && y.HttpMethod == method
                 ) &&
                 x.Response == Mock.Of<HttpResponseBase>()
             );

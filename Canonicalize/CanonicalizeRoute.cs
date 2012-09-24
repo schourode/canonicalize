@@ -44,6 +44,19 @@ namespace Canonicalize
         /// <returns>Route data with a <see cref="RedirectHandler"/> if any strategies were triggered, otherwise null.</returns>
         public override RouteData GetRouteData(HttpContextBase httpContext)
         {
+            switch (httpContext.Request.HttpMethod.ToUpperInvariant())
+            {
+                case "GET":
+                case "HEAD":
+                    return GetCanonicalizedRouteData(httpContext);
+
+                default:
+                    return null;
+            }
+        }
+
+        private RouteData GetCanonicalizedRouteData(HttpContextBase httpContext)
+        {
             var requestedUri = httpContext.Request.GetOriginalUrl();
             var uriBuilder = new UriBuilder(requestedUri);
 
