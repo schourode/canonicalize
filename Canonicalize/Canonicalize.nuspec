@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Canonicalize</id>
-    <version>1.2</version>
+    <version>1.3</version>
     <title>Canonicalize</title>
     <authors>Jørn Schou-Rode</authors>
     <licenseUrl>https://github.com/schourode/canonicalize/blob/master/LICENSE.txt</licenseUrl>

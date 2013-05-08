@@ -1,10 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Canonicalize.Strategies;
 
 namespace Canonicalize
 {
     public static class CanonicalizeRouteBuilderExtensions
     {
+        /// <summary>
+        /// Adds a <see cref="Strategies.CustomStrategy"/> to the strategy collection.
+        /// </summary>
+        /// <param name="builder">Reponsible for building the <see cref="CanonicalizeRoute"/>.</param>
+        /// <param name="action">The canonicalization action to be applied to the URL.</param>
+        /// <returns>itself, allowing additional method calls to be chained.</returns>
+        public static CanonicalizeRouteBuilder Custom(this CanonicalizeRouteBuilder builder, Action<UriBuilder> action)
+        {
+            return builder.Strategy(new CustomStrategy(action));
+        }
+
         /// <summary>
         /// Adds <see cref="Strategies.HostStrategy"/> to the strategy collection.
         /// </summary>

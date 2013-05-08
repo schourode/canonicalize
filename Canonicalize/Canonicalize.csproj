@@ -49,6 +49,7 @@
     <Compile Include="RouteCollectionExtensions.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Strategies\CustomStrategy.cs" />
     <Compile Include="Strategies\MapStrategy.cs" />
     <Compile Include="Strategies\HostStrategy.cs" />
     <Compile Include="Strategies\PatternStrategy.cs" />
